@@ -1,0 +1,15 @@
+from langchain_core.prompts import ChatPromptTemplate
+from app.utils.llm_config import get_gemini_llm
+
+llm = get_gemini_llm()
+
+prompt = ChatPromptTemplate.from_template(
+    """
+    A student is interested in: {interest}.
+    Suggest 3 career options based on this. 
+    Keep responses short and numbered.
+    """
+)
+
+def get_interest_chain():
+    return prompt | llm
